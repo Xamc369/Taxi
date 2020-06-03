@@ -62,8 +62,25 @@ namespace Taxi.Web.Controllers
                 //permite transformar a mayusculas
                 taxiEntity.Plaque = taxiEntity.Plaque.ToUpper();
                 _context.Taxis.Add(taxiEntity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        //es un atributo que sirve para crear mensajes
+                        ModelState.AddModelError(string.Empty, "Already exists a taxi with the same plaque.");
+                    }
+                    else
+                    {
+                        //es un atributo que sirve para crear mensajes
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+                    
+                }
             }
             return View(taxiEntity);
         }
@@ -100,8 +117,25 @@ namespace Taxi.Web.Controllers
             {
                 taxiEntity.Plaque = taxiEntity.Plaque.ToUpper();
                 _context.Update(taxiEntity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        //es un atributo que sirve para crear mensajes
+                        ModelState.AddModelError(string.Empty, "Already exists a taxi with the same plaque.");
+                    }
+                    else
+                    {
+                        //es un atributo que sirve para crear mensajes
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+
+                }
             }
             return View(taxiEntity);
         }
