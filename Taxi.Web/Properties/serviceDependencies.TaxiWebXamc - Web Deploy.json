@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/taxi-webdbserver1/databases/Taxi.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "TaxiWebContext",
+      "secretStore": null
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/taxi-webdbserver1/databases/Taxi.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "Data)",
+      "secretStore": null
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/taxi-webdbserver1/databases/Taxi.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
+      "secretStore": null
+    }
+  }
+}
