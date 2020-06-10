@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Taxi.Prism.Views;
 using Taxi.Prism.ViewModels;
+using Taxi.Common.Servicios;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Taxi.Prism
@@ -30,6 +31,8 @@ namespace Taxi.Prism
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IGeolocatorService, GeolocatorService>();
+
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
